@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/randimohorovic/Backend#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
