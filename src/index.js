@@ -2,7 +2,7 @@ import express from "express";
 import { storage } from "./memory_storage";
 import cors from "cors";
 import mongoose from "mongoose";
-
+import userRouter from "../routes/user.route.js";
 mongoose.connect(
   "mongodb+srv://admin:adminjobquest@jobquest.xzerq1j.mongodb.net/?retryWrites=true&w=majority&appName=jobquest"
 );
@@ -26,3 +26,5 @@ const port = 3000;
 // app.get("/primjer/student", (req, res) => res.send("Ugnježdena ruta"));
 
 app.listen(port, () => console.log(`slusam na portu ${port}`));
+
+app.use("/backend/user", userRouter);
