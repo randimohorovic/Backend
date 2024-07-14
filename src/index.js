@@ -32,3 +32,21 @@ app.listen(port, () => console.log(`slusam na portu ${port}`));
 
 app.use("/backend/user", userRouter);
 app.use("/backend/auth", authRouter);
+
+//error koj dolazi iz inputa, req data iz brosera, response je odg servera na kljentu stranu
+app.use((error, req, res, next) => {
+  const code = error.statusCode || 500; // ako postoji error spremi u varijablu inace error 500
+  const message = error.message || "greška servera";
+  return res.status(code).json({
+    code,
+    message,
+  });
+});
+
+// primjer u postmanu
+
+// {
+// 	"code": 500,
+// 	"message": "E11000 duplicate key error collection: test.users index: username_1 dup key: { username: \"user56\" }"
+// }
+// /////////////////////////////////////////////////
