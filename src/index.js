@@ -34,6 +34,7 @@ app.use("/backend/user", userRouter);
 app.use("/backend/auth", authRouter);
 
 //error koj dolazi iz inputa, req data iz brosera, response je odg servera na kljentu stranu
+//error
 app.use((error, req, res, next) => {
   const code = error.statusCode || 500; // ako postoji error spremi u varijablu inace error 500
   const message = error.message || "greška servera";
