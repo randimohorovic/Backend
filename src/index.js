@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "../routes/user.route.js";
 import authRouter from "../routes/auth.js";
+import cookieParser from "cookie-parser";
 
 mongoose.connect(
   "mongodb+srv://admin:adminjobquest@jobquest.xzerq1j.mongodb.net/?retryWrites=true&w=majority&appName=jobquest"
@@ -29,7 +30,7 @@ app.use(express.json());
 // app.get("/primjer/student", (req, res) => res.send("Ugnježdena ruta"));
 
 app.listen(port, () => console.log(`slusam na portu ${port}`));
-
+app.use(cookieParser());
 app.use("/backend/user", userRouter);
 app.use("/backend/auth", authRouter);
 

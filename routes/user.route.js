@@ -1,4 +1,6 @@
 import express from "express";
+import { verifyToken } from "../Handlers/checkUserAuth";
+import { updateUser } from "../Handlers/user.handler";
 
 const router = express.Router();
 
@@ -8,4 +10,7 @@ router.get("/", (req, res) => {
     test: "test123",
   });
 });
+
+router.put("/update/:userId", verifyToken, updateUser);
+
 export default router;

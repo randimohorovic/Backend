@@ -1,9 +1,9 @@
 import User from "../objects/user.js";
-import { errorHandler } from "./error.js";
+import { catchError } from "./error.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET || "placeholder_secret_key";
+const secretKey = process.env.secretKey || "ramzy";
 export const signup = async (req, res, next) => {
   // trebaju mi informacija s abrowsera
   const { username, email, password } = req.body;
@@ -22,19 +22,19 @@ export const signin = async (req, res, next) => {
 
   // ako mi je username ili password nepostoji ili je prazan onda trebam error ispisat
   if (!email || !password || email === "" || password === "") {
-    next(errorHandler(400, "Ispuni sva polja"));
+    next(catchError(400, "Ispuni sva polja"));
   }
 
   try {
     const validUser = await User.findOne({ email });
     if (!validUser) {
-      return next(errorHandler(401, "korisnik ne postoji"));
+      return next(catchError(401, "korisnik ne postoji"));
     }
 
     if (password !== validUser.password) {
-      return next(errorHandler(402, "kriva lozinka"));
+      return next(catchError(402, "kriva lozinka"));
     }
-    const token = jwt.sign({ id: validUser._id }, JWT_SECRET);
+    const token = jwt.sign({ id: validUser._id }, secretKey, {});
     const { password: pass, ...rest } = validUser._doc;
 
     res

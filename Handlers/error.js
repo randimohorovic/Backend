@@ -1,4 +1,4 @@
-export const errorHandler = (code, message) => {
+export const catchError = (code, message) => {
   const error = new Error();
   error.statusCode = code;
   error.message = message;
