@@ -8,8 +8,9 @@ export const test = (req, res) => {
 // console.log(req.user);
 //};
 
+//povezat na front
 export const updateUser = async (req, res, next) => {
-  if (req.user.id !== req.params.userId) {
+  if (req.user.id !== req.params.id) {
     return next(
       catchError(403, "Nemate dopuštenje za ažuriranje ovog korisnika")
     );
@@ -40,7 +41,7 @@ export const updateUser = async (req, res, next) => {
   }
   try {
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.userId,
+      req.params.id,
       {
         $set: {
           username: req.body.username,

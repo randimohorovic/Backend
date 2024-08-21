@@ -11,6 +11,6 @@ router.get("/", (req, res) => {
   });
 });
 
-router.put("/update/:userId", verifyToken, updateUser);
+router.post("/update/:id", verifyToken, updateUser);
 
 export default router;
