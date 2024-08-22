@@ -1,5 +1,6 @@
 import User from "../objects/user.js";
 import { catchError } from "./error.js";
+
 export const test = (req, res) => {
   res.json({ message: "loading" });
 };
@@ -8,6 +9,7 @@ export const test = (req, res) => {
 // console.log(req.user);
 //};
 
+// next mi hendla erore
 //povezat na front
 export const updateUser = async (req, res, next) => {
   if (req.user.id !== req.params.id) {
@@ -53,6 +55,15 @@ export const updateUser = async (req, res, next) => {
     );
     const { password, ...rest } = updatedUser._doc;
     res.status(200).json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
+//try and catch zato sto ako pukne nesto da izbaci eror
+export const logout = (req, res, next) => {
+  try {
+    res.clearCookie("token").status(200).json("Odjavljeni ste");
   } catch (error) {
     next(error);
   }

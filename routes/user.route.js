@@ -1,6 +1,6 @@
 import express from "express";
 import { verifyToken } from "../Handlers/checkUserAuth";
-import { updateUser } from "../Handlers/user.handler";
+import { updateUser, logout } from "../Handlers/user.handler";
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     test: "test123",
   });
 });
-
+// kreiras, rutu, importas funkciju koju vrši iz user.handlers.js
 router.post("/update/:id", verifyToken, updateUser);
-
+router.post("/logout", logout);
 export default router;
