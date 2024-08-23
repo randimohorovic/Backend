@@ -34,7 +34,11 @@ export const signin = async (req, res, next) => {
     if (password !== validUser.password) {
       return next(catchError(402, "kriva lozinka"));
     }
-    const token = jwt.sign({ id: validUser._id }, secretKey, {});
+    const token = jwt.sign(
+      { id: validUser._id, isAdmin: validUser.isAdmin },
+      secretKey,
+      {}
+    );
     const { password: pass, ...rest } = validUser._doc;
 
     res
