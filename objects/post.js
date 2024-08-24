@@ -25,6 +25,18 @@ const postObject = new mongoose.Schema(
       unique: true,
       required: true,
     },
+    pay: {
+      type: Number,
+      unique: false,
+      required: false,
+      default: "",
+    },
+    llc: {
+      type: String,
+      unique: true,
+      required: true,
+      default: "LLC",
+    },
   },
   { timestamps: true }
 );

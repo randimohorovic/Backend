@@ -38,6 +38,8 @@ export const getposts = async (req, res, next) => {
       ...(req.query.category && { category: req.query.category }),
       ...(req.query.urlTitle && { urlTitle: req.query.urlTitle }),
       ...(req.query.postId && { _id: req.query.postId }),
+      ...(req.query.pay && { pay: req.query.pay }),
+      ...(req.query.llc && { llc: req.query.llc }),
       ...(req.query.searchTerm && {
         $or: [
           { title: { $regex: req.query.searchTerm, $options: "i" } },
