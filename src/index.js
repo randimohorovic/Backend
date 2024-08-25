@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import userRouter from "../routes/user.route.js";
 import authRouter from "../routes/auth.js";
 import postRouter from "../routes/post.route.js";
+import ratingRouter from "../routes/rating.route.js";
 import cookieParser from "cookie-parser";
 
 mongoose.connect(
@@ -35,6 +36,7 @@ app.use(cookieParser());
 app.use("/backend/user", userRouter);
 app.use("/backend/auth", authRouter);
 app.use("/backend/post", postRouter);
+app.use("/backend/rating", ratingRouter);
 //error koj dolazi iz inputa, req data iz brosera, response je odg servera na kljentu stranu
 //error
 app.use((error, req, res, next) => {
