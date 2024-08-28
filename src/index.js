@@ -1,6 +1,4 @@
 import express from "express";
-import { storage } from "./memory_storage";
-import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "../routes/user.route.js";
 import authRouter from "../routes/auth.js";
@@ -16,22 +14,6 @@ const deploy = path.resolve();
 const app = express();
 const port = 3000;
 app.use(express.json());
-
-// app.use(cors());
-
-// console.log(storage);
-// app.get("/", (req, res) => {
-//   console.log(req.query); // za primanje parametra tipy string
-//   res.send("hello world ubrowser "); // 2 metode send() slanje stringa i json() za slanje json podataka
-//   console.log("hello u konzolu");
-// });
-
-// app.get("/posts", (req, res) => {
-//   let postovi = storage.posts;
-//   res.json(postovi);
-// });
-
-// app.get("/primjer/student", (req, res) => res.send("Ugnježdena ruta"));
 
 app.listen(port, () => console.log(`slusam na portu ${port}`));
 app.use(cookieParser());

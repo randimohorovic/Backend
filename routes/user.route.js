@@ -4,12 +4,6 @@ import { updateUser, logout } from "../Handlers/user.handler";
 
 const router = express.Router();
 
-// definiram si sve rute koje koristim za backend
-router.get("/", (req, res) => {
-  res.json({
-    test: "test123",
-  });
-});
 // kreiras, rutu, importas funkciju koju vrši iz user.handlers.js
 router.post("/update/:id", verifyToken, updateUser);
 router.post("/logout", logout);
